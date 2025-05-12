@@ -11,7 +11,7 @@ df = df[(df['Year'] >= 1992) & (df['Year'] <= 2020)]
 df['Total_Medals'] = df['Gold'] + df['Silver'] + df['Bronze']
 
 app = dash.Dash(__name__)
-app.title = "Dashboard Olímpico"
+server = app.server
 
 app.layout = html.Div([
     html.H1("🏅 Dashboard Olímpico - Medalhas de Verão (1992–2020)", style={
@@ -116,4 +116,4 @@ def update_graphs(medal_type, selected_year, selected_country):
     return map_fig, area_fig, bar_fig, pie_fig
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8050, use_reloader = False)
